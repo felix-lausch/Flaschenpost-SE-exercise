@@ -1,5 +1,36 @@
 # flaschenpost SE – IT Exercise Task #5
 
+## Running the project
+
+**Prerequisites:** .NET 10 SDK
+
+```bash
+cd API
+dotnet run
+```
+
+The API will be available at `http://localhost:5076`. Available routes (all accept a `url` query parameter):
+
+```
+GET /api/product/most-expensive-cheapest?url=<json-url>
+GET /api/product/beers-at-1799?url=<json-url>
+GET /api/product/most-bottles?url=<json-url>
+GET /api/product/all?url=<json-url>
+```
+
+The routes can be executed via the `API.http` file + viable editor (e.g. VS Code or Visual Studio)
+
+## Running the tests
+
+```bash
+cd API.Test
+dotnet test
+```
+
+---
+
+## Exercise description
+
 „C# Restful API Service to analyze JSON product data“
 
 Create a simple C#/.NET Restful API service, that:
