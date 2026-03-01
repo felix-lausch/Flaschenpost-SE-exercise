@@ -1,6 +1,22 @@
-@API_HostAddress = http://localhost:5076
+@host = http://localhost:5076
+@DataUrl = https://flapotest.blob.core.windows.net/test/ProductData.json
 
-GET {{API_HostAddress}}/weatherforecast/
+### All results combined
+GET {{host}}/api/all?url={{DataUrl}}
 Accept: application/json
 
-###
+### Most expensive and cheapest beer per litre
+GET {{host}}/api/most-expensive-cheapest?url={{DataUrl}}
+Accept: application/json
+
+### Beers costing exactly €17.99 (sorted by price/litre)
+GET {{host}}/api/beers-at-1799?url={{DataUrl}}
+Accept: application/json
+
+### Product with most bottles
+GET {{host}}/api/most-bottles?url={{DataUrl}}
+Accept: application/json
+
+### Fetch source data
+GET @DataUrl
+Accept: application/json
