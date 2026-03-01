@@ -17,7 +17,7 @@ public static class ProductAnalysis
             throw new NoProductsException("No products with parseable price per liter found.");
         }
 
-        return new(articleResults.Last(), articleResults.First());
+        return new(articleResults.First(), articleResults.Last());
     }
 
     public static ArticleResult GetMostBottles(List<Product> products)
