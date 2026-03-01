@@ -18,5 +18,7 @@ GET {{host}}/api/most-bottles?url={{DataUrl}}
 Accept: application/json
 
 ### Fetch source data
-GET @DataUrl
+GET https://flapotest.blob.core.windows.net/test/ProductData.json
 Accept: application/json
+
+###
