@@ -17,7 +17,27 @@ public class ProductClient(HttpClient httpClient)
 
     public async Task<List<Product>> FetchProductsAsync(Uri url)
     {
-        var response = await httpClient.GetStreamAsync(url);
-        return await JsonSerializer.DeserializeAsync<List<Product>>(response, options);
+        try
+        {
+            var response = await httpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+
+            await using var stream = await response.Content.ReadAsStreamAsync();
+
+            return await JsonSerializer.DeserializeAsync<List<Product>>(stream, options)
+                ?? throw new ProductDataException("Product data source returned null.");
+        }
+        catch (HttpRequestException ex)
+        {
+            throw new ProductDataException("Upstream request failed.", ex);
+        }
+        catch (TaskCanceledException ex)
+        {
+            throw new ProductDataException("Upstream request timed out.", ex);
+        }
+        catch (JsonException ex)
+        {
+            throw new ProductDataException("Invalid product data format.", ex);
+        }
     }
 }

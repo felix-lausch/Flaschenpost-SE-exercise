@@ -11,6 +11,12 @@ public static class ProductAnalysis
             .OrderBy(x => x.PricePerLiter)
             .ToList();
 
+
+        if (articleResults.Count == 0)
+        {
+            throw new NoProductsException("No products with parseable price per liter found.");
+        }
+
         return new(articleResults.Last(), articleResults.First());
     }
 
@@ -19,6 +25,11 @@ public static class ProductAnalysis
         var articleResults = FlattenArticles(products)
             .Where(x => x.BottleCount is not null)
             .ToList();
+
+        if (articleResults.Count == 0)
+        {
+            throw new NoProductsException("No products with parseable bottle count found.");
+        }
 
         return articleResults.OrderByDescending(x => x.BottleCount).First();
     }

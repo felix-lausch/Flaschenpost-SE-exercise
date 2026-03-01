@@ -2,19 +2,19 @@
 @DataUrl = https://flapotest.blob.core.windows.net/test/ProductData.json
 
 ### All results combined
-GET {{host}}/api/all?url={{DataUrl}}
+GET {{host}}/api/product/all?url={{DataUrl}}
 Accept: application/json
 
 ### Most expensive and cheapest beer per litre
-GET {{host}}/api/most-expensive-cheapest?url={{DataUrl}}
+GET {{host}}/api/product/most-expensive-cheapest?url={{DataUrl}}
 Accept: application/json
 
 ### Beers costing exactly €17.99 (sorted by price/litre)
-GET {{host}}/api/beers-at-1799?url={{DataUrl}}
+GET {{host}}/api/product/beers-at-1799?url={{DataUrl}}
 Accept: application/json
 
 ### Product with most bottles
-GET {{host}}/api/most-bottles?url={{DataUrl}}
+GET {{host}}/api/product/most-bottles?url={{DataUrl}}
 Accept: application/json
 
 ### Fetch source data
