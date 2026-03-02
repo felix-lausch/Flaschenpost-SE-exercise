@@ -6,7 +6,8 @@ using System.Collections.Generic;
 
 [TestClass]
 public class ProductAnalysisTests
-{[TestMethod]
+{
+    [TestMethod]
     public void GetCheapestAndMostExpensive_ReturnsOrderedByPricePerLiter()
     {
         var products = new List<Product>

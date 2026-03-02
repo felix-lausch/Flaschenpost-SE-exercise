@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("/api/[Controller]")]
-public class ProductController(ProductClient client) : ControllerBase
+public class ProductsController(ProductClient client) : ControllerBase
 {
     [HttpGet("most-expensive-cheapest")]
     public async Task<IActionResult> GetMostExpensiveCheapest([FromQuery] Uri? url)

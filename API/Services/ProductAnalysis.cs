@@ -57,7 +57,8 @@ public static class ProductAnalysis
                 p.Id, a.Id, p.BrandName, p.Name,
                 a.ShortDescription, a.Price,
                 a.GetPricePerLiter(),
-                a.GetBottleCount())));
+                a.GetBottleCount(),
+                a.Image)));
     }
 }
 
@@ -69,7 +70,8 @@ public record ArticleResult(
     string ShortDescription,
     decimal Price,
     decimal? PricePerLiter,
-    int? BottleCount);
+    int? BottleCount,
+    string Image);
 
 public record CheapestAndMostExpensiveResult(ArticleResult Cheapest, ArticleResult MostExpensive);
 
